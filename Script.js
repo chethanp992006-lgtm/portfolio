@@ -6,28 +6,31 @@
 
     const themeToggle = document.getElementById("theme-toggle");
 
-    // Check saved theme
-    const savedTheme = localStorage.getItem("theme");
+    if (themeToggle) {
 
-    if (savedTheme === "light") {
-        document.body.classList.add("light-mode");
-        themeToggle.textContent = "🌙";
-    }
+        const savedTheme = localStorage.getItem("theme");
 
-    // Toggle theme
-    themeToggle.addEventListener("click", () => {
-
-        document.body.classList.toggle("light-mode");
-
-        if (document.body.classList.contains("light-mode")) {
+        if (savedTheme === "light") {
+            document.body.classList.add("light-mode");
             themeToggle.textContent = "🌙";
-            localStorage.setItem("theme", "light");
         } else {
             themeToggle.textContent = "☀️";
-            localStorage.setItem("theme", "dark");
         }
 
-    });
+        themeToggle.addEventListener("click", () => {
+
+            document.body.classList.toggle("light-mode");
+
+            if (document.body.classList.contains("light-mode")) {
+                themeToggle.textContent = "🌙";
+                localStorage.setItem("theme", "light");
+            } else {
+                themeToggle.textContent = "☀️";
+                localStorage.setItem("theme", "dark");
+            }
+
+        });
+    }
 
 
     // =========================
